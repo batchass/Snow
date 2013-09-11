@@ -16,6 +16,12 @@
     <Filter Include="Blocks">
       <UniqueIdentifier>{91AEA7C7-F9FB-4CA5-ADCD-DF7A1F6CB8B5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Blocks\ciUI">
+      <UniqueIdentifier>{1AABCCDC-0B84-4CAC-A57D-6F0C4F610B23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\ciUI\src">
+      <UniqueIdentifier>{3B16929E-BACB-4567-99FE-32058018E935}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Blocks\OSC">
       <UniqueIdentifier>{01086E13-FE35-47CC-8E04-326BD2BCC3D8}</UniqueIdentifier>
     </Filter>
@@ -140,10 +146,16 @@
     <ClInclude Include="..\include\Resources.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\cinder_master\blocks\ciUI\src\ciUI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\include\Particle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\include\ParticleSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SnowApp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
