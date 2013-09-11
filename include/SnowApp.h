@@ -5,6 +5,7 @@
 #include "ParticleSystem.h"
 #include "dwmapi.h"
 #include "ciUI.h"
+#include "OscListener.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -37,6 +38,7 @@ public:
 	void mouseDown( MouseEvent event );	
 	void update();
 	void draw();
+	void quitProgram();
 	void createNewWindow();
 	ciUICanvas *gui;   
 	void guiEvent(ciUIEvent *event);
@@ -58,5 +60,6 @@ private:
 	Surface8u					mImageOutput;
 	int							mUpdateInterval;
 	double						lastUpdate;
+	osc::Listener 				receiver;
 
 };

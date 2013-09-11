@@ -35,6 +35,8 @@ void SnowApp::setup()
 
 	mFrequency = 0.01f;
 	mPerlin = Perlin();
+	receiver.setup( 10006 );
+
 	createNewWindow();
 
 }
@@ -45,8 +47,6 @@ void SnowApp::guiEvent(ciUIEvent *event)
 	if(name == "rate")
 	{
 		ciUIRotarySlider *rate = (ciUIRotarySlider *) event->widget; 
-		cout << rate->getScaledValue() << endl;
-		cout << rate->getValue() << endl;
 		mUpdateInterval = rate->getScaledValue(); 
 	}
 }
@@ -97,6 +97,34 @@ void SnowApp::mouseDown( MouseEvent event )
 
 void SnowApp::update()
 {
+		while( receiver.hasWaitingMessages() ) {
+		osc::Message m;
+		receiver.getNextMessage( &m );
+
+		console() << "New message received" << std::endl;
+		console() << "Address: " << m.getAddress() << std::endl;
+		console() << "Num Arg: " << m.getNumArgs() << std::endl;
+
+		if(m.getAddress() == "/snow/rate"){
+			mUpdateInterval = m.getArgAsInt32(0);
+		}
+		else if(m.getAddress() == "/window/position"){
+			// window position
+			setWindowPos(m.getArgAsInt32(0), m.getArgAsInt32(1));
+		}
+		else if(m.getAddress() == "/window/setfullscreen"){
+			// fullscreen
+			//setFullScreen( ! isFullScreen() );
+		}		
+		else if(m.getAddress() == "/quit"){
+			quitProgram();
+		}		
+		else{
+			// unrecognized message
+			cout << "not recognized:" << m.getAddress() << endl;
+		}
+
+	}
 	if ( getElapsedFrames() - lastUpdate > mUpdateInterval )
 	{
 		lastUpdate = getElapsedFrames();
@@ -150,5 +178,8 @@ void SnowApp::draw()
 		mParticleSystem.draw();
 	}
 }
-
+void SnowApp::quitProgram()
+{
+	quit();
+}
 CINDER_APP_NATIVE( SnowApp, RendererGl )
