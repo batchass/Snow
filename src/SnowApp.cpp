@@ -15,8 +15,7 @@ void SnowApp::setup()
 	mRenderY = 0;
 	for (auto display : Display::getDisplays() )
 	{
-		std::cout << "Reso:" << display->getHeight() << "\n"; //getSize()
-		//display->getMainDisplay
+		std::cout << "Reso:" << display->getHeight() << "\n"; 
 		mRenderWidth = display->getWidth();
 		mRenderHeight = display->getHeight();
 	}
@@ -30,7 +29,7 @@ void SnowApp::setup()
 	gui = new ciUICanvas(0,0,getWindowWidth(), getWindowHeight());
 	gui->setTheme( CI_UI_THEME_RUSTICORANGE );
 
-	gui->addWidgetDown( new ciUIRotarySlider( 50, 0.0, 6.0, 2.0, "rate" ) ); 
+	gui->addWidgetDown( new ciUIRotarySlider( 50, 0.0, 4.0, 1.0, "rate" ) ); 
 	gui->registerUIEvents(this, &SnowApp::guiEvent); 
 
 	mFrequency = 0.01f;

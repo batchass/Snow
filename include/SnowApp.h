@@ -30,7 +30,6 @@ class RenderWindow
 		
 };
 
-
 class SnowApp : public AppNative {
 public:
 	void prepareSettings( AppBasic::Settings *settings );
